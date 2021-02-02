@@ -1,0 +1,21 @@
+/*global chrome*/
+
+export async function changeColor() {
+  chrome.storage.sync.set({color: "#3aa757"}, ({ color }) => {
+    console.log(color)
+  });
+
+  await chrome.tabs.query({active: true, currentWindow: true}, 
+    (
+      r => {
+      chrome.tabs.executeScript(r[0].id , {file: 'scripts/changeBgColor.js'}, function() {
+        if(chrome.runtime.lastError) {
+          console.error("Script injection failed: " + chrome.runtime.lastError.message);
+        }
+      })
+    }
+  ));
+
+  // chrome.tabs.executeScript(activeTab[0].id , setPageBackgroundColor(), (r => console.log(r)))
+
+}
