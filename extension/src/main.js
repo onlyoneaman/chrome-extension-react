@@ -15,7 +15,5 @@ export async function changeColor() {
       })
     }
   ));
-
-  // chrome.tabs.executeScript(activeTab[0].id , setPageBackgroundColor(), (r => console.log(r)))
-
+  
 }
