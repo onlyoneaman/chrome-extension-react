@@ -1,9 +1,7 @@
 /*global chrome*/
 
 export async function changeColor() {
-  chrome.storage.sync.set({color: "#3aa757"}, ({ color }) => {
-    console.log(color)
-  });
+  chrome.storage.sync.set({color: "#3aa757"}, ()=>{});
 
   await chrome.tabs.query({active: true, currentWindow: true}, 
     (
